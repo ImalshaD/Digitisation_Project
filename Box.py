@@ -16,3 +16,20 @@ class Box:
     
     def getHeight(self):
         return self.__height
+    
+    def getx1(self):
+        return self.__x1
+    def getx2(self):
+        return self.__x2
+    def getx3(self):
+        return self.__x3
+    def getx4(self):
+        return self.__x4
+    def gety1(self):
+        return self.__y1
+    def gety2(self):
+        return self.__y2
+    def gety3(self):
+        return self.__y3
+    def gety4(self):
+        return self.__y4

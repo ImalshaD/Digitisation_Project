@@ -1,5 +1,4 @@
 from Cell import Cell
-
 class Table:
     def __init__(self,cols,rows,*cells: Cell,name:str) -> None:
         self.__name = name
@@ -22,7 +21,7 @@ class Table:
     def getThreshold(self)->list:
         return [self.__xThreshold,self.__yThreshold]
     
-    def getColumns(self)->list:
+    def getColumns(self)-> list:
         columns = [[],[]]
         col1=col2=False
         for i in (self.__cells):
