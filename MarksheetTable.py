@@ -10,16 +10,15 @@ class MarksheetTable(Table):
         marks=dict()
         qs,marsk = super().getColumns()
         for q in qs:
+            marks[q.getText()]=None
             x2,y2 = q.getC2Cordinates()
             x3,y3 = q.getC3Cordinates()
-            thresh = super().__xThreshold
-            xt2 = x2+thresh
-            xt3 = x3-thresh
+            thresh = super().getYThreshold()
+            yt2 = y2-thresh
+            yt3 = y3+thresh
             for m in marsk:
-                x1 = m.getC1Cordinates()
-                x4 = m.getC4Cordinates()
-                if (x1<xt2 and x1>xt3) and (x4<xt2 and x4>xt3):
-                    marks[int(q.getText())] = float(q.getText())
-                else:
-                    marks[int(q.getText())] = None
+                x1 ,y1= m.getC1Cordinates()
+                print(q.getText(),m.getText(),y1,yt2,yt3)
+                if (y1>=yt2 and y1<=yt3):
+                    marks[q.getText()] = float(m.getText())
         return marks

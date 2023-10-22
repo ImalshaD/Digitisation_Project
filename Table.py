@@ -12,8 +12,8 @@ class Table:
             sellheight,sellwidth = cell.getWidthAndHeight()
             self.__sumHeight+=sellheight
             self.__sumHeight+=sellwidth
-        self.__xThreshold = (self.__sumWidth/self.__cellCount)/4
-        self.__yThreshold = (self.__sumHeight/self.__cellCount)/4
+        self.__xThreshold = (self.__sumWidth/self.__cellCount)
+        self.__yThreshold = (self.__sumHeight/self.__cellCount)
 
     def getMeanWidthandHeight(self)->list:
         return [self.__sumHeight/self.__cellCount,self.__sumWidth/self.__cellCount]
@@ -23,17 +23,19 @@ class Table:
     
     def getColumns(self)-> list:
         columns = [[],[]]
-        col1=col2=False
+        col1=False
+        col2=False
         for i in (self.__cells):
-            if(i.getText=="Question"):
+            if(i.getText()=="Question"):
                 col1=True
-            elif(i.getText=="Marks"):
+            elif(i.getText()=="Marks" and col1==True):
                 col2=True
             elif(col1==True and col2==False):
                 columns[0].append(i)
             elif(col1==True and col2==True):
                 columns[1].append(i)
         return columns   
-
+    def getYThreshold(self)->float:
+        return self.__yThreshold
 
     
