@@ -18,7 +18,6 @@ class MarksheetTable(Table):
             yt3 = y3+thresh
             for m in marsk:
                 x1 ,y1= m.getC1Cordinates()
-                print(q.getText(),m.getText(),y1,yt2,yt3)
                 if (y1>=yt2 and y1<=yt3):
                     marks[q.getText()] = float(m.getText())
         return marks
