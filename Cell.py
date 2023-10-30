@@ -12,7 +12,7 @@ class Cell:
     def getText(self) -> str:
         return self.__text
     def getWidthAndHeight(self)->list:
-        return [self.__box.getHeight(),self.__box.getWidth()]
+        return [self.__box.getWidth(),self.__box.getHeight()]
     def getC1Cordinates(self)->list:
         return [self.__box.getx1(),self.__box.gety1()]
     def getC2Cordinates(self)->list:

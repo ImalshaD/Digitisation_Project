@@ -7,5 +7,6 @@ class IndexNumber:
         for i in range(len(self.__text)):
             if self.__text[i].isdigit():
                 num+=self.__text[i]
-        num+=self.__text[-1]
+        if(self.__text[-1].isalpha()):
+            num+=self.__text[-1]
         return num

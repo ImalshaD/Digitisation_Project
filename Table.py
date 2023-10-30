@@ -1,4 +1,5 @@
 from Cell import Cell
+from CustomSorter import CustomSorter
 class Table:
     def __init__(self,cols,rows,*cells: Cell,name:str) -> None:
         self.__name = name
@@ -13,7 +14,7 @@ class Table:
             self.__sumHeight+=sellheight
             self.__sumHeight+=sellwidth
         self.__xThreshold = (self.__sumWidth/self.__cellCount)
-        self.__yThreshold = (self.__sumHeight/self.__cellCount)
+        self.__yThreshold = (self.__sumHeight/self.__cellCount)/2
 
     def getMeanWidthandHeight(self)->list:
         return [self.__sumHeight/self.__cellCount,self.__sumWidth/self.__cellCount]
@@ -21,20 +22,40 @@ class Table:
     def getThreshold(self)->list:
         return [self.__xThreshold,self.__yThreshold]
     
+    def sort(self):
+        self.__cells = CustomSorter.sortByYandX(self.__cells)
+
+    def sortCol(self,col)->list:
+        sortCol = CustomSorter.sortByXandY(col)
+        return sortCol
+    
+    def sortByY(self):
+        self.__cells = CustomSorter.sortByY(self.__cells)
+
     def getColumns(self)-> list:
         columns = [[],[]]
-        col1=False
-        col2=False
-        for i in (self.__cells):
-            if(i.getText()=="Question"):
-                col1=True
-            elif(i.getText()=="Marks" and col1==True):
-                col2=True
-            elif(col1==True and col2==False):
-                columns[0].append(i)
-            elif(col1==True and col2==True):
+        self.sortByY()
+        x1,y1=self.__cells[8].getC1Cordinates()
+        x2,y2=self.__cells[8].getC2Cordinates()
+        x3,y3=self.__cells[8].getC3Cordinates()
+        x4,y4=self.__cells[8].getC4Cordinates()
+        ref=(x1+x2+x3+x4)/4
+        # print(self.__cells[8].getC1Cordinates(),self.__cells[8].getC2Cordinates(),self.__cells[8].getC3Cordinates(),self.__cells[8].getC4Cordinates())
+        for i in (self.__cells[8:]):
+            w,h=i.getWidthAndHeight()
+            x1,y1=i.getC1Cordinates()
+            x2,y2=i.getC2Cordinates()
+            x3,y3=i.getC3Cordinates()
+            x4,y4=i.getC4Cordinates()
+            meanX=(x1+x2+x3+x4)/4
+            # print(meanX,ref,w,i.getText())
+            if(meanX>ref+w/4):
                 columns[1].append(i)
+            else:
+                columns[0].append(i)
+        # print(columns)
         return columns   
+    
     def getYThreshold(self)->float:
         return self.__yThreshold
 
