@@ -8,7 +8,6 @@ import cv2
 ocr = GoogleVisionOCR()
 img = cv2.imread(r'Test_Images\Tables\20231019_092445.jpg')
 x=ocr.detectText(img)
-print(x)
 l=[]
 for i in x:
     b=Box(i.bounding_poly.vertices[0].x,i.bounding_poly.vertices[1].x,i.bounding_poly.vertices[2].x,i.bounding_poly.vertices[3].x,i.bounding_poly.vertices[0].y,i.bounding_poly.vertices[1].y,i.bounding_poly.vertices[2].y,i.bounding_poly.vertices[3].y)
