@@ -7,7 +7,7 @@ class MarksheetTable(Table):
     def __init__(self, cols, rows, img, name: str,ocr = GoogleVisionOCR()) -> None:
         l=[]
         x=ocr.detectText(img)
-        print(x)
+        print(x[1]['boundingPoly']['vertices'][0]['y'])
         for i in x[1:]:
             b=Box(i.bounding_poly.vertices[0].x,i.bounding_poly.vertices[1].x,i.bounding_poly.vertices[2].x,i.bounding_poly.vertices[3].x,i.bounding_poly.vertices[0].y,i.bounding_poly.vertices[1].y,i.bounding_poly.vertices[2].y,i.bounding_poly.vertices[3].y)
             c=Cell(i.description,b)
