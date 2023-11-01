@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "digitization-pro",
+  "private_key_id": "d4ecfcebef4c57eb2ad938dc19003ddbfe1fc1cb",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCb09HrJxnsgTLy\nBH8xuRjeJoZcfep1FhtP/PsVWKjsA+ulIhdxJreT21GG2GU/CPcZS2zQOeJ3E6qh\nmuqXgRb6tAWWv4NW1GdVBM2aFs2VtTETVOsvbwvOwedvaK6pyNCrxwKLgGgHBdVE\nBdVv2JAV74sbR7AZCE+4x6brEgxvzn1Il92nHbhPXYMiSCw89/gpkMhQ1osL4SeU\n3tqYCxv4HUras2tyQUpwKWk9adUHwhrFVkozeB2uzR+PuT5zFqW+xlmwg6xrlxKn\nQFgLVdCWUKiuhUgAuZ4DagNr+bRS9/LgXU1hZ+nSE+HKkgagkvWU32H+1JPGq/9b\nssWiDwqNAgMBAAECggEAGHV1Rd6HkmiOJVBA4b5esaHk5ZgrCLFNXK8F/yoBK7iK\n0IrrGIrd9kKOx6ZoL+55kJoW7JElY5Dt77tH9rtfrr66gNizJholVQIxvm21W7oK\nx7DE0JdyyEOFzuYkwkgfvtK4KsrfKTkIakqrH4jjxtmoYUINmURFdSi7Ybrdwl+t\nN9UfmhrirMdNKSivIkk6BQTGBUAhmshwS/klCMvYhCMiSjVbJOwu/RXbdPkzS82e\nehw/pODtkHhIsGIBc/8fM8yMXoxrPsWbhn+8NqPVujjAcAL/RbChhA//ZvFIdr4J\nGGZmCtcfshiglcyEeXmnF2KnrwmKzOJMoyEhPhMrIQKBgQDaDz5wCBvBzubDUInj\nI+Yik8liO0gptEGXGrdFu2YfyLPtIRAbpGjFM0NHvrLNBgUXq77vPX+bSiXM2GKe\n29Y9g5cAiWeo8v48MxGzOLaW2s7VosifGjqTSuJKwdxNkt4LlzPcD5cwiyjstM3+\nRadIHDoJDn1uMRs3EjSKcADk7QKBgQC28KXP92eHmqBS0WR8+W4a/LIJ/22rst4+\ntXw2sxMjC7O9qoQNSDXPLMOTNhezsqbJrm5a2hVw8bNx7pZnsioSqU0LxCKlCopo\nnXmD9QhMk4V9vcA5UU+fObo8QLQ3Fgvb8G+Ug/N21/Qt8i6Qfw1vMTDiNquA1P4D\nr7nWWc6oIQKBgQDQxsWWB/1jaxBAMm1Cfw2JT4wBtBacb0xZOyf76LeXeNbkE8LT\nZG83V6R0HZ4ddEUN687sSipR6QUWApsx0/NkhAfgaK5J8RT/WDn7KTKQbsCXhLqm\nsjsg6RKOVtvxnctgt4zchkTQIny1XUrYx6GpBfV+1FO9W+Ddsl2BqkkA5QKBgQCj\nwTYruqKJ1/e7KoRw+jV9IsWb/XEGSM54A6x0qkdvD4KNPJ2H5iOEl+VZWQpOaJSz\n49gUqzKWL0UZryAjInBW1AWLir4YTh8nFg8395a+NS9BJyFyLT7AoMP8O08WID3t\nWoQGxTaiIx0II8lavuAfsEC5vYY3hHD8i8gl/63lAQKBgQCsbnufWXd2dMdeOGUh\nzCvpZaBDj2byDDD3G7SJMiY3e62NoCga9N81soW/+DQstTE1J7gmZoYbNyP06He7\n4KZ/N+MWn4D0TaV+6woOPmi/PGTpmEI9QHG1o9xhdZI9imxNfzNp1yiDNc7hDd3k\nCsElU3D6bhd5FVEFGvULVl1pRA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "digiproject@digitization-pro.iam.gserviceaccount.com",
+  "client_id": "100206991382320487350",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/digiproject%40digitization-pro.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

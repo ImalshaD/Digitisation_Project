@@ -8,6 +8,7 @@ class ModuleYear(db.Model):
     finalmax = db.Column(db.Float,nullable=False)
     moderated = db.Column(db.Boolean,nullable=False,default=False)
     module_id = db.Column(db.Integer, db.ForeignKey('module.module_id'), nullable=False)
+    max_qs = db.Column(db.Integer,nullable=False)
     marks = db.relationship("Marks",backref="moduleYear",lazy=True)
 
     def __repr__(self):

@@ -19,7 +19,7 @@ def getmodules():
                 module_instance = module.module_years
                 for year in module_instance:
                     moduleYear = ModuleYearDTO(year.module_year_id,year.year,year.caweights,
-                                               year.finalweights,year.camax,year.finalmax,year.moderated,year.module_id)
+                                               year.finalweights,year.camax,year.finalmax,year.moderated,year.module_id,year.max_qs)
                     moduleYears.append(moduleYear.__dict__)
                 modules.addmodule(module.module_id,module.module_code,module.module_name,module.user_id,
                                         moduleYears 

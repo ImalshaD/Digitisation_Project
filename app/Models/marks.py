@@ -15,6 +15,7 @@ class Marks(db.Model):
     q10 = db.Column(db.Float,nullable=True)
     q11 = db.Column(db.Float,nullable=True)
     q12 = db.Column(db.Float,nullable=True)
+    camarks = db.Column(db.Float,nullable=True)
     final = db.Column(db.Float,nullable=True)
     moderated_final = db.Column(db.Float,nullable=True)
 

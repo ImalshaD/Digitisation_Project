@@ -33,21 +33,24 @@ def add_user():
         password=data['password']
         existing_user = User.query.filter_by(user_name=user_name).first()
         if existing_user:
-            return jsonify()
+            code=404
+            msg="User exists"
+        else:
+            new_user = User(user_name=user_name,password=password)
+            # Add the new user to the database session
+            db.session.add(new_user)
 
-        new_user = User(user_name=user_name,password=password)
-        # Add the new user to the database session
-        db.session.add(new_user)
-
-        # Commit the changes to persist the new user in the database
-        db.session.commit()
-
+            # Commit the changes to persist the new user in the database
+            db.session.commit()
+            code=200
+            msg="User added successfully"
         # Return a success response
-        return jsonify(StatusDTO(200,"User Registration Success").__dict__)
     except Exception as e:
         # Rollback in case of an error and return an error response
         db.session.rollback()
-        return jsonify(StatusDTO(404,str(e)).__dict__), 500
+        code=404
+        msg=str(e)
     finally:
         # Close the database session
         db.session.close()
+        return jsonify(StatusDTO(code,msg).__dict__)
