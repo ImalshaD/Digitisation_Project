@@ -5,7 +5,7 @@ from ..DTO import StatusDTO
 login_bp = Blueprint('auth',__name__)
 
 #auth/login
-@login_bp.route('/login' , methods = ["GET"])
+@login_bp.route('/login' , methods = ["POST"])
 def login():
     try:
         data = request.get_json()
@@ -13,7 +13,8 @@ def login():
         password=data['password']
         existing_user = User.query.filter_by(user_name=user_name).first()
         if not (existing_user):
-            return jsonify(StatusDTO(404,"User name not valid").__dict__)
+            response =jsonify(StatusDTO(404,"User name not valid").__dict__)
+            return response
         else:
             if password == existing_user.password:
                 return jsonify(StatusDTO(200,"Login sucsses").__dict__)
@@ -30,8 +31,6 @@ def add_user():
         data = request.get_json()
         user_name=data['user_name']
         password=data['password']
-        print(user_name,password)
-        user_columns = User.__table__.columns
         existing_user = User.query.filter_by(user_name=user_name).first()
         if existing_user:
             return jsonify()
@@ -44,11 +43,11 @@ def add_user():
         db.session.commit()
 
         # Return a success response
-        return jsonify({"message": "User added successfully"})
+        return jsonify(StatusDTO(200,"User Registration Success").__dict__)
     except Exception as e:
         # Rollback in case of an error and return an error response
         db.session.rollback()
-        return jsonify({"error": str(e)}), 500
+        return jsonify(StatusDTO(404,str(e)).__dict__), 500
     finally:
         # Close the database session
         db.session.close()

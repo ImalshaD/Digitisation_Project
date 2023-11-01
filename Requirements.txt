@@ -2,4 +2,5 @@ openCv - pip install cv2
 google-cloud-vision
 Flask
 FlaskSqlAlchemy
-
+pymysql
+ultralytics
