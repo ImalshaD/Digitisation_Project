@@ -5,13 +5,11 @@ from ..DTO import StatusDTO
 import os
 ca_bp = Blueprint('ca',__name__)
 #ca/uploadcsv
-@ca_bp.route('/uploadcsv' , methods = ["PUT"])
-def uploadcsv():
+@ca_bp.route('/uploadcsv/<int:module_year_id>' , methods = ["PUT"])
+def uploadcsv(module_year_id):
     try:
         if 'file' not in request.files:
             return jsonify(StatusDTO(404,"File Not Found").__dict__)
-        data = request.get_json()
-        module_year_id = data['module_year_id']
         file = request.files['file']
 
         if file.filename == '':
@@ -26,6 +24,6 @@ def uploadcsv():
         else:
             return jsonify(StatusDTO(404,"No file selected").__dict__)
     except Exception as e:
-        jsonify(StatusDTO(404,str(e)).__dict__)
+        return jsonify(StatusDTO(404,str(e)).__dict__)
 
 
