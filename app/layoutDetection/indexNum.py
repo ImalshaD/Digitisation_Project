@@ -5,7 +5,6 @@ class IndexNumber:
         x=ocr.detectText(img)
         self.__text=x[0]['description']
     def getIndexNumber(self) -> int:
-        num=self.__text[-1]
         d={'a': ['4'],
             'b': ['8'],
             'c': ['6'],
@@ -58,12 +57,13 @@ class IndexNumber:
             'Y': ['5'],
             'Z': ['2']}
         i=-2
+        num=self.__text[-1]
         while i>=-6:
             i-=1
             if self.__text[i].isdigit():
-                num+=self.__text[i]
+                num=self.__text[i]+num
             elif(self.__text[i] in d):
-                num+=d[self.__text[i]][0]
+                num=d[self.__text[i]][0]+num
             else:
-                num+='_'
+                num=self.__text[i]+num
         return num
