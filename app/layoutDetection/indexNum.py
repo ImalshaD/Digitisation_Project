@@ -4,8 +4,28 @@ class IndexNumber:
     def __init__(self,img,ocr=GoogleVisionOCR()) -> None:
         x=ocr.detectText(img)
         self.__text=x[0]['description']
-    def getIndexNumber(self) -> int:
-        d={'a': ['4'],
+    def mapLetter(self,letter:str) -> str:
+        dc={'0': ['O'],
+            '1': ['I'],
+            '2': ['Z'],
+            '3': ['B'],
+            '4': ['A'],
+            '5': ['S'],
+            '6': ['G'],
+            '7': ['J'],
+            '8': ['B'],
+            '9': ['Q']
+        }
+        if(letter.isupper()):
+            return letter
+        elif(letter.islower()):
+            return letter.upper()
+        elif(letter in dc):
+            return dc[letter][0]
+        else:
+            return '_'
+    def mapNumber(self,numbers:str) -> str:
+        di={'a': ['4'],
             'b': ['8'],
             'c': ['6'],
             'd': ['9'],
@@ -14,7 +34,7 @@ class IndexNumber:
             'g': ['9'],
             'h': ['4'],
             'i': ['1'],
-            'j': ['1'],
+            'j': ['7'],
             'k': ['8'],
             'l': ['1'],
             'n': ['0'],
@@ -36,11 +56,11 @@ class IndexNumber:
             'C': ['6'],
             'D': ['0'],
             'E': ['3'],
-            'F': ['7'],
+            'F': ['8'],
             'G': ['9'],
             'H': ['4'],
             'I': ['7'],
-            'J': ['1'],
+            'J': ['7'],
             'K': ['8'],
             'L': ['1'],
             'M': ['3'],
@@ -56,15 +76,22 @@ class IndexNumber:
             'W': ['7'],
             'X': ['2'],
             'Y': ['5'],
-            'Z': ['2']}
+            'Z': ['2'],
+            '}': ['1'],
+            '{': ['1']
+        }
+        num=''
         i=-2
-        num=self.__text[-1]
-        while i>=-6:
+        m=6
+        while m>0:
+            if numbers[i].isdigit():
+                num=numbers[i]+num
+                m-=1
+            elif(numbers[i] in di):
+                num=di[numbers[i]][0]+num
+                m-=1
             i-=1
-            if self.__text[i].isdigit():
-                num=self.__text[i]+num
-            elif(self.__text[i] in d):
-                num=d[self.__text[i]][0]+num
-            else:
-                num=self.__text[i]+num
+        return num
+    def getIndexNumber(self) -> int:
+        num=self.mapNumber(self.__text)+self.mapLetter(self.__text[-1])
         return num
