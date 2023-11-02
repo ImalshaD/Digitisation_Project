@@ -16,6 +16,69 @@ class MarksheetTable(Table):
         super().__init__(cols, rows, *l, name=name)
         self.__question=[]
         self.__marks=[]
+
+    def mapping(self,x)->str:
+        d={'a': ['4'],
+            'b': ['8'],
+            'c': ['6'],
+            'd': ['9'],
+            'e': ['3'],
+            'f': ['7'],
+            'g': ['9'],
+            'h': ['4'],
+            'i': ['1'],
+            'j': ['1'],
+            'k': ['8'],
+            'l': ['1'],
+            'm': ['3'],
+            'o': ['0'],
+            'p': ['9'],
+            'q': ['9'],
+            'r': ['1'],
+            's': ['5'],
+            't': ['7'],
+            'u': ['0'],
+            'v': ['7'],
+            'w': ['7'],
+            'x': ['2'],
+            'y': ['5'],
+            'z': ['2'],
+            'A': ['4'],
+            'B': ['8'],
+            'C': ['6'],
+            'D': ['0'],
+            'E': ['3'],
+            'F': ['7'],
+            'G': ['9'],
+            'H': ['4'],
+            'I': ['7'],
+            'J': ['1'],
+            'K': ['8'],
+            'L': ['1'],
+            'M': ['3'],
+            'N': ['5'],
+            'O': ['0'],
+            'P': ['9'],
+            'Q': ['9'],
+            'R': ['8'],
+            'S': ['5'],
+            'T': ['7'],
+            'U': ['0'],
+            'V': ['0'],
+            'W': ['7'],
+            'X': ['2'],
+            'Y': ['5'],
+            'Z': ['2']}
+        y=''
+        for i in x:
+            if i.isdigit():
+                y+=i
+            elif(i in d):
+                y+=d[i][0]
+            else:
+                y+='_'
+        return y
+
     def getMarks(self)->dict:
         marks=dict()
         qs,marsk = super().getColumns()
@@ -29,5 +92,5 @@ class MarksheetTable(Table):
             for m in marsk:
                 x1 ,y1= m.getC1Cordinates()
                 if (y1>=yt2 and y1<=yt3):
-                    marks[q.getText()] = float(m.getText())
+                    marks[self.mapping(q.getText())] = float(self.mapping(m.getText()))
         return marks
