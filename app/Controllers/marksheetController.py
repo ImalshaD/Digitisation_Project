@@ -3,12 +3,16 @@ from app import db
 from ..Models import User,Module,ModuleYear,Marks
 from ..DTO import ModulesDTO,ModuleYearDTO, StatusDTO,ModuleYearsDTO,MarksDTO
 import os
-
+from PIL import Image
+from io import BytesIO
+import base64
 marksheet_bp = Blueprint('markSheet',__name__)
 
 #/marksheet/upload
-@marksheet_bp.route('/upload', methods=['PUT'])
+@marksheet_bp.route('/upload', methods=['POST'])
 def uploadImage():
+    print(request.form)
+    print(request.files)
     if 'image' in request.files:
         image = request.files['image']
         # Process the image as needed (e.g., save to server, perform analysis, etc.)
@@ -18,7 +22,31 @@ def uploadImage():
     else:
         marks = MarksDTO(404,'200487B',1,10,11,12,13,14,15,16,17,18,19,12,11,11,23,100,78)
         return jsonify(marks.__dict__)
-@marksheet_bp.route('/upload', methods=['PUT'])
+#/marksheet/uploadjson
+@marksheet_bp.route('/uploadjson', methods=['PUT'])
+def upload_image():
+    data = request.get_json()
+    try:
+        if 'image' in data:
+            print('xx')
+            # Decode the base64-encoded image data
+            image_data = base64.b64decode(data['image'])
+            
+            # Process the image as needed (e.g., save to server, perform analysis, etc.)
+            image = Image.open(BytesIO(image_data))
+            image.save(r"app\resources\Temp\\" + "uploaded_image.jpg")
+
+            # Respond with a success message or any other relevant information
+            marks = MarksDTO(200, '200487B', 1, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 12, 11, 11, 23, 100, 78)
+            return jsonify(marks.__dict__)
+        else:
+            marks = MarksDTO(404, '200487B', 1, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 12, 11, 11, 23, 100, 78)
+            return jsonify(marks.__dict__)
+
+    except Exception as e:
+        print(e)
+        return jsonify({'error': str(e)}), 500
+@marksheet_bp.route('/confirm', methods=['PUT'])
 def confirm():
     try:
         data = request.get_json()

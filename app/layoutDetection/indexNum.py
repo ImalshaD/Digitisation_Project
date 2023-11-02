@@ -1,9 +1,9 @@
-from OCR import GoogleVisionOCR
+from GoogelVisionOCR import GoogleVisionOCR
 import cv2
 class IndexNumber:
     def __init__(self,img,ocr=GoogleVisionOCR()) -> None:
         x=ocr.detectText(img)
-        self.__text=x[0]['description']
+        self.__text=x[0].description
     def getIndexNumber(self) -> int:
         num=self.__text[-1]
         d={'a': ['4'],
