@@ -6,7 +6,7 @@ from google.oauth2 import service_account
 import numpy as np
 import cv2
 class GoogleVisionOCR:
-    def __init__(self,accessTokenPath:str = "AccessTokens.json") -> None:
+    def __init__(self,accessTokenPath:str = "digitization-pro-db817cdea63f.json") -> None:
         self.accessToken = accessTokenPath
         self.credentials = service_account.Credentials.from_service_account_file(self.accessToken)
         self.client = vision.ImageAnnotatorClient(credentials=self.credentials)
