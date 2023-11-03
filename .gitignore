@@ -1,0 +1,4 @@
+# Ignore sensitive information
+access.json
+digitization-pro-db817cdea63f.json
+/config/
