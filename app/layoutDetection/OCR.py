@@ -7,7 +7,7 @@ import cv2
 import requests  # Add the requests module for making HTTP requests
 
 class GoogleVisionOCR:
-    def __init__(self, api_key: str ="AIzaSyDkXzKDQp5BB6FBYOFJlcb_4sX_by2S5Ls") -> None:
+    def __init__(self, api_key: str ="") -> None:
         self.api_key = api_key
 
     def detectText(self, img: np.array):
