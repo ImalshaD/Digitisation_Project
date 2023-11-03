@@ -1,7 +1,8 @@
 from app import db
 
 class Marks(db.Model):
-    index_number = db.Column(db.String(20),primary_key = True)
+    marks_id = db.Column(db.Integer,primary_key=True)
+    index_number = db.Column(db.String(20),nullable=False)
     module_year_id = db.Column(db.ForeignKey('module_year.module_year_id'), nullable=False)
     q1 = db.Column(db.Float,nullable=True)
     q2 = db.Column(db.Float,nullable=True)

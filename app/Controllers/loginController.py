@@ -3,6 +3,7 @@ from app import db
 from ..Models import User
 from ..DTO import StatusDTO
 login_bp = Blueprint('auth',__name__)
+from ..layoutDetection import DetectLayout
 
 #auth/login
 @login_bp.route('/login' , methods = ["POST"])

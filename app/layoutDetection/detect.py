@@ -1,6 +1,6 @@
 from ultralytics import YOLO
-from indexNum import IndexNumber
-from MarksheetTable import MarksheetTable
+from .indexNum import IndexNumber
+from .MarksheetTable import MarksheetTable
 import numpy
 import cv2
 class DetectLayout:
@@ -8,6 +8,8 @@ class DetectLayout:
         self.image=image
         self.model = model
         self.saves=model.predict(source=image, show=False, save=False, conf=0.5, save_txt=False, save_crop=False)
+        self.indexNumber="Could not detect"
+        self.marks = {}
         for detection in self.saves:
             for index, (box, label) in enumerate(zip(detection.boxes.xyxy, detection.boxes.cls)):
                 if int(label)==1:

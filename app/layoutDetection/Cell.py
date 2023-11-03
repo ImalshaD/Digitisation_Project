@@ -1,4 +1,4 @@
-from Box import Box
+from .Box import Box
 class Cell:
     # cell loactions of GoogleOCR
     #    1--------------2

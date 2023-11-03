@@ -1,5 +1,5 @@
-from Cell import Cell
-from CustomSorter import CustomSorter
+from .Cell import Cell
+from .CustomSorter import CustomSorter
 class Table:
     def __init__(self,cols,rows,*cells: Cell,name:str) -> None:
         self.__name = name
@@ -49,7 +49,8 @@ class Table:
             x4,y4=i.getC4Cordinates()
             meanX=(x1+x2+x3+x4)/4
             # print(meanX,ref,w,i.getText())
-            if(meanX>ref+w/4):
+            print(meanX,ref+w/4,i.getText())
+            if(meanX>100):
                 columns[1].append(i)
             else:
                 columns[0].append(i)
